@@ -11,7 +11,7 @@ import express from 'express';
     const app = express();
     const port = process.env.PORT || 5500;
     app.set("port",5500);
-    app.listen(app.get(port));
+    app.listen(app.get("port"));
     console.log("Servidor corriendo en puerto ", app.get("port"));
 
 //configuracion 
