@@ -1,9 +1,8 @@
-import e = require("express");
 
 document.getElementById("register-form").addEventListener("submit", async(e)=>{
     e.preventDefault();
     console.log(e.target.children.user.value);
-    const res = await fetch("http://localhost:5500/pages/register.html", {
+    const res = await fetch("http://127.0.0.1:5500/pages/pagesegister.html", {
         method: "POST",
         headers:{
             "Content-Type" : "application/json"
