@@ -22,5 +22,5 @@ import express from 'express';
 
     app.get("/", (req,res)=> res.sendFile(__dirname + "/pages/login.html"))
     app.get("/register", (req,res)=> res.sendFile(__dirname + "/pages/register.html"))
-    AudioParamMap.get("/admin", (req,res)=> res.sendFile(__dirname + "/pages/admin/admin.html"))
+    app.get("/admin", (req,res)=> res.sendFile(__dirname + "/pages/admin/admin.html"))
     
