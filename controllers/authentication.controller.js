@@ -32,9 +32,10 @@ async function register(req, res) {
     const nuevoUsuario ={
         user, email, password: hashPassword
     }
-    console.log(nuevoUsuario)
-    usuarios.push(nuevoUsuario)
-    res.status(201).send({status:"ok", message:`Usuario ${nuevoUsuario.user} agregado`, redirect:"/" })
+    
+    usuarios.push(nuevoUsuario);
+    console.log(usuarios);
+    res.status(201).send({status:"ok", message:`Usuario ${nuevoUsuario.user} agregado`, redirect:"/" });
 }
 
 export const methods = {
