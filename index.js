@@ -23,8 +23,8 @@
 
 //rutas
 
-    app.get("/", (req,res)=> res.sendFile(__dirname + "/pages/login.html"));
-    app.get("/register", (req,res)=> res.sendFile(__dirname + "/pages/register.html"));
-    app.get("/admin", (req,res)=> res.sendFile(__dirname + "/pages/admin/admin.html"));
+    app.get("/",authorization.soloPublico, (req,res)=> res.sendFile(__dirname + "/pages/login.html"));
+    app.get("/register",authorization.soloPublico, (req,res)=> res.sendFile(__dirname + "/pages/register.html"));
+    app.get("/admin",authorization.soloAdmin, (req,res)=> res.sendFile(__dirname + "/pages/admin/admin.html"));
     app.post("/api/register", authentication.register);
     app.post("/api/login", authentication.login);
