@@ -16,47 +16,8 @@ html {
   }
 
 
-header {
-    background-color: green;
-    padding: 35px;
-    height: 140px;
-}
 
-p {
-    display: inline;
-}
-
-#form {
-    text-align: center;
-    padding-top: 4%;
-}
-
-footer {
-    background-color: green;
-    padding: 35px;
-    /* margin-top: 490px; */
-    /* position: relative; */
-    margin-top: 30%;
-}
-
-#index-footer {
-    background-color: green;
-    padding: 35px;
-    /* margin-top: 490px; */
-    margin-top: 15.5%;
-}
-
-#button-back {
-    float: left;
-    position: relative;
-    bottom: 75%;
-}
-
-#icon {
-    float: right;
-    margin-top: -6%;
-    
-}
+-----------------------------------------------------------------------------------------
 
 * {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
