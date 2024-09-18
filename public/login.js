@@ -1,4 +1,4 @@
-const messageError= document.getElementById("error")[0]
+const messageError= document.getElementByIdClassName("error")[0]
 
 document.getElementById("login-form").addEventListener("submit",async (e)=>{
     e.preventDefault();
