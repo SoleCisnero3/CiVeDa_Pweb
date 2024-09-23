@@ -1,11 +1,11 @@
 import bcriptjs from "bcryptjs";
-import  SsonWebToken  from "jsonwebtoken";
+import  jsonwebtoken  from "jsonwebtoken";
 import dotenv from "dotenv"
 
 
 dotenv.config();
 
-const usuarios = [{
+export const usuarios = [{
     user: "a",
     email: "a@a.com",
     password: "a"
