@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Mascotas - CiVeDa</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <h1>Detalle de Mascotas</h1>
+    <form action="/mascotas" method="post" enctype="multipart/form-data">
+        <label for="name">Nombre de la Mascota:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description"></textarea>
+        
+        <label for="image">Imagen:</label>
+        <input type="file" id="image" name="image" required>
+        
+        <button type="submit">Registrar</button>
+    </form>
+    <div id="pets-list"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('/mascotas');
+            const mascotas = await response.json();
+            const petsList = document.getElementById('pets-list');
+            mascotas.forEach(mascota => {
+                const petDiv = document.createElement('div');
+                petDiv.classList.add('pet');
+                petDiv.innerHTML = `
+                    <h3>${mascota.name}</h3>
+                    <p>${mascota.description}</p>
+                    <img src="${mascota.image}" alt="${mascota.name}">
+                `;
+                petsList.appendChild(petDiv);
+            });
+        });
+    </script>
+</body>
+</html>
