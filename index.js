@@ -1,5 +1,8 @@
-import express from 'express'
+/*import express from 'express'
 import cookieParser from 'cookie-parser';
+
+// Conexión a MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/civeda', { useNewUrlParser: true, useUnifiedTopology: true });
 //Fix para __direname
   
     import path from 'path';
@@ -28,3 +31,58 @@ import cookieParser from 'cookie-parser';
     app.get("/admin",authorization.soloAdmin, (req,res)=> res.sendFile(__dirname + "/pages/admin/admin.html"));
     app.post("/api/register", authentication.register);
     app.post("/api/login", authentication.login);
+    */
+    const express = require('express');
+    const mongoose = require('mongoose');
+    const bodyParser = require('body-parser');
+    const multer = require('multer');
+    const path = require('path');
+    
+    const app = express();
+    const port = process.env.PORT || 3000;
+    
+    // Conexión a MongoDB
+    mongoose.connect('mongodb://127.0.0.1:27017/civeda', { useNewUrlParser: true, useUnifiedTopology: true });
+    
+    // Middleware
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    // Servir archivos estáticos del directorio public
+    app.use(express.static(path.join(__dirname, 'public')));
+    
+    // Rutas
+    const mascotasRoutes = require('./routes/mascotas');
+    const trasladoRoutes = require('./routes/traslado');
+    const historialRoutes = require('./routes/historial');
+    
+    // Aquí conectamos las rutas
+    app.use('/mascotas', mascotasRoutes);
+    app.use('/traslado', trasladoRoutes);
+    app.use('/historial', historialRoutes);
+    
+    // Ruta principal
+    app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    });
+    
+    app.get('/login', (req, res) => {
+        res.sendFile(path.join(__dirname, 'views', 'login.html'));
+    });
+    
+    app.get('/mascotas', (req, res) => {
+        res.sendFile(path.join(__dirname, 'views', 'mascotaDetalle.html'));
+    });
+    
+    app.get('/historial', (req, res) => {
+        res.sendFile(path.join(__dirname, 'views', 'historial.html'));
+    });
+    
+    app.get('/traslado', (req, res) => {
+      res.sendFile(path.join(__dirname, 'views', 'traslado.html'));
+    });
+    
+    // Iniciar el servidor
+    app.listen(port, () => {
+        console.log(`Servidor corriendo en http://localhost:${port}`);
+    });
+    
