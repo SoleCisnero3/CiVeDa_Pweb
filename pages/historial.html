@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial - CiVeDa</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <h1>Historial de Mascotas</h1>
+    <div id="historial-list"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('/historial');
+            const historial = await response.json();
+            const historialList = document.getElementById('historial-list');
+            historial.forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.classList.add('historial-entry');
+                entryDiv.innerHTML = `
+                    <p>Fecha: ${new Date(entry.date).toLocaleDateString()}</p>
+                    <p>Tratamiento: ${entry.treatment}</p>
+                    <p>Medicación: ${entry.medication}</p>
+                    <p>Notas: ${entry.notes}</p>
+                `;
+                historialList.appendChild(entryDiv);
+            });
+        });
+    </script>
+</body>
+</html>
